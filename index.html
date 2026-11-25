@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>123 — Missions</title>
+<meta name="theme-color" content="#17201c">
+<style>
+:root{--bg:#151a18;--panel:#202824;--panel2:#29332e;--green:#3db69d;--green2:#c9ddb7;--left:#2b3828;--muted:#9db4ac;--text:#f1f6f2;--red:#e05252;--line:#35413b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer;border:0}
+.login{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}.hero{background:var(--left);padding:48px 3vw;display:flex;flex-direction:column;justify-content:space-between;min-height:100vh;color:var(--green2)}.brand{font-size:20px;font-weight:750;letter-spacing:-.4px}.hero-bottom h1{font-size:clamp(76px,9vw,116px);letter-spacing:7px;line-height:.9;margin:0 0 28px;font-weight:800}.hero-bottom p{max-width:340px;line-height:1.8;font-size:16px;margin:0}.login-side{display:flex;align-items:center;justify-content:center;padding:40px}.login-box{width:min(100%,360px)}h2{font-size:28px;margin:0 0 6px;letter-spacing:-.6px}.sub{color:var(--muted);margin:0 0 28px}.field{display:block;margin:0 0 15px}.field span{display:block;font-size:13px;font-weight:650;margin-bottom:9px}.field input,.field textarea{width:100%;border:1px solid #303b36;background:#202724;color:var(--text);border-radius:10px;padding:14px 15px;outline:none;transition:.2s}.field input:focus,.field textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px #3db69d22}.primary{width:100%;border-radius:10px;background:var(--green);color:#071b17;font-weight:750;padding:14px;margin-top:20px}.primary:hover{filter:brightness(1.07)}.error{color:#ff9292;font-size:13px;min-height:18px;margin-top:12px}.hidden{display:none!important}
+.app{min-height:100vh}.topbar{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:#171e1a;position:sticky;top:0;z-index:4}.topbar .brand{color:var(--green2)}.top-actions{display:flex;gap:10px;align-items:center}.user-pill{background:var(--panel);border:1px solid var(--line);padding:9px 13px;border-radius:30px;color:var(--muted);font-size:13px}.ghost{background:transparent;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:10px 13px}.main{max-width:1150px;margin:0 auto;padding:38px 24px 90px}.welcome{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:28px}.eyebrow{color:var(--green);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800}.welcome h1{font-size:32px;margin:7px 0 5px}.muted{color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}.stat,.section,.mission{background:var(--panel);border:1px solid var(--line);border-radius:15px}.stat{padding:18px}.stat strong{font-size:27px;display:block;margin-bottom:4px}.stat span{font-size:13px;color:var(--muted)}.section{padding:22px;margin-bottom:18px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:16px}.section h2{font-size:19px}.mission-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mission{padding:17px;background:var(--panel2)}.mission h3{font-size:16px;margin:0 0 7px}.mission p{color:var(--muted);font-size:13px;line-height:1.55;margin:0 0 14px;white-space:pre-wrap}.mission-foot{display:flex;align-items:center;justify-content:space-between;gap:10px}.tag{font-size:11px;padding:5px 8px;border-radius:30px;background:#3db69d1b;color:#75d8c1}.done{background:#263a32;color:#9ce2c5}.smallbtn{border-radius:8px;padding:9px 12px;background:var(--green);color:#092019;font-weight:700;font-size:12px}.smallbtn:disabled{opacity:.45;cursor:default}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.admin-form{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px}.admin-form h3{margin:0 0 13px;font-size:15px}.admin-form .field{margin-bottom:10px}.admin-form .field input,.admin-form .field textarea{padding:11px}.admin-form .primary{margin-top:7px;padding:11px}.people,.reports{display:grid;gap:9px}.person,.report{border:1px solid var(--line);background:var(--panel2);border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px}.report{display:block}.person-actions,.mission-actions{display:flex;gap:6px;flex-wrap:wrap}.danger{background:#713638;color:#ffe1e1;border-radius:8px;padding:8px 10px;font-size:12px;font-weight:700}.mini{background:#34443c;color:#dcebe2;border-radius:8px;padding:8px 10px;font-size:12px}.file-row{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);background:var(--panel2);padding:12px;border-radius:10px}.file-row a{color:#83ddc4;text-decoration:none;font-weight:700}.file-meta{font-size:11px;color:var(--muted);margin-top:4px}.report p{white-space:pre-wrap;color:var(--muted);margin:8px 0}.report select{background:#1c2520;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:7px}.empty{color:var(--muted);font-size:13px;padding:15px;text-align:center;border:1px dashed var(--line);border-radius:10px}.problem{position:fixed;right:24px;bottom:22px;background:var(--red);color:white;border-radius:12px;padding:14px 18px;font-weight:750;box-shadow:0 8px 30px #0005;z-index:6}.modal-back{position:fixed;inset:0;background:#0009;display:grid;place-items:center;padding:20px;z-index:10}.modal{width:min(100%,440px);background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 20px 70px #0008}.modal h2{font-size:21px;margin-bottom:8px}.modal textarea{min-height:130px;resize:vertical}.modal-actions{display:flex;gap:10px}.modal-actions button{flex:1}.toast{position:fixed;top:90px;right:22px;background:#263a32;border:1px solid #3b6b59;color:#b5f1d6;padding:12px 16px;border-radius:10px;z-index:20;max-width:350px}
+@media(max-width:760px){.login{grid-template-columns:1fr}.hero{min-height:230px;padding:25px 26px}.hero-bottom h1{font-size:58px;margin:25px 0 12px}.hero-bottom p{font-size:13px}.login-side{padding:42px 25px}.topbar{padding:0 18px;height:66px}.main{padding:28px 16px 90px}.welcome{align-items:start;flex-direction:column}.stats{gap:8px}.stat{padding:13px}.stat strong{font-size:22px}.stat span{font-size:11px}.mission-list,.admin-grid{grid-template-columns:1fr}.section{padding:16px}.problem{right:14px;bottom:14px}.user-pill{display:none}}
+
+.chat-log{display:grid;gap:10px;max-height:42vh;overflow:auto;margin:14px 0;padding:2px}
+.chat-bubble{max-width:92%;padding:11px 13px;border-radius:12px;white-space:pre-wrap;line-height:1.5;font-size:13px}
+.chat-bubble.user{justify-self:end;background:#28584c;color:#eafff7}
+.chat-bubble.ai{justify-self:start;background:#29332e;border:1px solid var(--line);color:var(--text)}
+.chat-compose{display:flex;gap:8px;align-items:end}
+.chat-compose textarea{flex:1;min-height:70px;max-height:150px}
+.chat-compose button{width:auto;min-width:100px}
+.report-conversation{display:grid;gap:7px;margin:10px 0}
+.report-msg{padding:9px 11px;border-radius:9px;background:#1d2722;white-space:pre-wrap;line-height:1.45}
+.report-msg b{display:block;font-size:11px;color:var(--green);margin-bottom:4px}
+
+</style>
+</head>
+<body>
+<div id="loginView" class="login">
+  <section class="hero">
+    <div class="brand">123</div>
+    <div class="hero-bottom"><h1>123</h1><p>Des instructions claires, étape par étape,<br>partagées avec toi par un simple lien.</p></div>
+  </section>
+  <section class="login-side">
+    <form id="loginForm" class="login-box">
+      <h2>Connexion</h2><p class="sub">Entre l'email et le mot de passe de ton compte.</p>
+      <label class="field"><span>Email</span><input id="email" type="email" autocomplete="username" required></label>
+      <label class="field"><span>Mot de passe</span><input id="password" type="password" autocomplete="current-password" required></label>
+      <button class="primary" type="submit">Se connecter</button><div id="loginError" class="error"></div>
+    </form>
+  </section>
+</div>
+<div id="appView" class="app hidden">
+  <header class="topbar"><div class="brand">123 <span style="font-weight:400;color:var(--muted)">/ Missions</span></div><div class="top-actions"><span id="userLabel" class="user-pill"></span><button id="logoutBtn" class="ghost">Déconnexion</button></div></header>
+  <main class="main">
+    <div class="welcome"><div><div class="eyebrow">Espace missions</div><h1 id="welcomeTitle">Bonjour !</h1><div class="muted">Retrouve ici les missions à réaliser.</div><div id="accountDiagnostic" class="muted" style="font-size:11px;margin-top:8px"></div></div></div>
+    <div class="stats"><div class="stat"><strong id="statTotal">0</strong><span>Missions à faire</span></div><div class="stat"><strong id="statDone">0</strong><span>Missions terminées</span></div><div class="stat"><strong id="statPercent">0%</strong><span>Progression</span></div></div>
+    <section class="section"><div class="section-head"><h2>Missions communes</h2></div><div id="commonMissions" class="mission-list"></div></section>
+    <section class="section"><div class="section-head"><h2>Mes missions</h2></div><div id="myMissions" class="mission-list"></div></section>
+    <section class="section"><div class="section-head"><h2>Fichiers collectifs</h2><span class="muted" style="font-size:12px">Partagés avec tous les comptes</span></div><div id="sharedFilesList" class="people"></div></section>
+    <div id="adminArea" class="hidden">
+      <div class="eyebrow" style="margin:28px 0 12px">Administration</div>
+      <section class="section"><div class="section-head"><h2>Gestion des missions et des comptes</h2></div>
+        <div class="admin-grid">
+          <form id="personForm" class="admin-form"><h3>Ajouter une personne</h3><label class="field"><span>Prénom</span><input id="personName" required maxlength="40" placeholder="Ex. Lucas"></label><label class="field"><span>UID Firebase</span><input id="personUid" required placeholder="Identifiant du compte"></label><button class="primary" type="submit">Ajouter la personne</button></form>
+          <form id="commonForm" class="admin-form"><h3>Créer une mission commune</h3><label class="field"><span>Titre</span><input id="commonTitle" required maxlength="100"></label><label class="field"><span>Description / consignes</span><textarea id="commonDesc" rows="3"></textarea></label><button class="primary" type="submit">Créer la mission</button></form>
+          <form id="individualForm" class="admin-form"><h3>Créer une mission individuelle</h3><label class="field"><span>Personne</span><select id="assignedUid" required></select></label><label class="field"><span>Titre</span><input id="individualTitle" required maxlength="100"></label><label class="field"><span>Description / consignes</span><textarea id="individualDesc" rows="3"></textarea></label><button class="primary" type="submit">Créer la mission</button></form>
+          <div class="admin-form"><h3>Personnes ajoutées</h3><div id="peopleList" class="people"></div></div>
+          <form id="fileForm" class="admin-form"><h3>Envoyer un fichier collectif</h3><label class="field"><span>Fichier (650 Ko maximum)</span><input id="sharedFile" type="file" required><small class="muted">Pour rester sur le forfait gratuit, seuls les petits fichiers sont acceptés.</small></label><button class="primary" type="submit">Envoyer à tout le monde</button></form>
+        </div>
+      </section>
+      <section class="section"><div class="section-head"><h2>Suivi des missions</h2></div><div id="adminMissionList" class="mission-list"></div></section>
+      <section class="section"><div class="section-head"><h2>Tableau de bord — Assistance IA</h2><span class="tag">Conversations</span></div><div id="reportsList" class="reports"></div></section>
+    </div>
+  </main>
+  <button id="problemBtn" class="problem">Un problème ?</button>
+</div>
+<div id="problemModal" class="modal-back hidden"><div class="modal">
+  <h2>Assistant 123</h2><p class="sub">Décris le problème. L'assistant IA va essayer de t'aider. La conversation sera aussi visible par l'administrateur.</p>
+  <div id="chatLog" class="chat-log"><div class="chat-bubble ai">Bonjour ! Explique-moi ce qui ne fonctionne pas sur le site 123.</div></div>
+  <form id="problemForm"><div class="chat-compose"><textarea id="problemText" required maxlength="1200" placeholder="Écris ton message..."></textarea><button class="primary" type="submit" id="sendProblem" style="margin:0">Envoyer</button></div></form>
+  <div class="modal-actions" style="margin-top:12px"><button type="button" id="cancelProblem" class="ghost">Fermer</button><span id="chatState" class="muted" style="font-size:12px;align-self:center"></span></div>
+</div></div>
+<div id="toast" class="toast hidden"></div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, getIdToken } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, addDoc, collection, getDocs, query, orderBy, serverTimestamp, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCurnuzj5Yzw62CW6VnmVkHOH6L3-fredU",
+  authDomain: "expo-869b1.firebaseapp.com",
+  projectId: "expo-869b1",
+  storageBucket: "expo-869b1.firebasestorage.app",
+  messagingSenderId: "544158319085",
+  appId: "1:544158319085:web:69df89d65b8dddc6e027e4",
+  measurementId: "G-P5HEW5D92F"
+};
+const ADMIN_UID = "hoacbGTPLvQsVTUmk7xSeLEiR6Z2";
+// Remplace cette adresse par l’URL de ton Worker après son déploiement.
+const AI_WORKER_URL = "https://holy-union-94df.frenzipixel.workers.dev/";
+const app = initializeApp(firebaseConfig), auth = getAuth(app), db = getFirestore(app);
+let currentUser = null, profile = null, people = [], missions = [], completions = {}, sharedFiles = [];
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function toast(msg){$("toast").textContent=msg;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),3200)}
+function isAdmin(){return currentUser?.uid === ADMIN_UID}
+function showLogin(){ $("loginView").classList.remove("hidden");$("appView").classList.add("hidden"); }
+function showApp(){ $("loginView").classList.add("hidden");$("appView").classList.remove("hidden"); }
+function empty(el,msg){el.innerHTML=`<div class="empty">${esc(msg)}</div>`}
+async function loadData(){
+  const pSnap=await getDoc(doc(db,"users",currentUser.uid));
+  // L'identité est toujours liée à l'UID du compte connecté, jamais à l'ordre des comptes ou à l'email.
+  profile=pSnap.exists()?pSnap.data():{firstName:currentUser.displayName || currentUser.email?.split("@")[0] || "Utilisateur"};
+  $("welcomeTitle").textContent=`Bonjour ${profile.firstName || "!"} !`;
+  $("userLabel").textContent=profile.firstName || currentUser.email;
+  $("accountDiagnostic").textContent=`Compte : ${profile.firstName || "Utilisateur"} · UID : ${currentUser.uid}`;
+  $("adminArea").classList.toggle("hidden",!isAdmin());
+  $("accountDiagnostic").textContent=isAdmin()?"Mode administrateur actif.":`UID connecté : ${currentUser.uid} — ce compte n'est pas reconnu comme administrateur.`;
+  const [mSnap, fSnap]=await Promise.all([
+    getDocs(collection(db,"missions")),
+    getDocs(query(collection(db,"sharedFiles"),orderBy("createdAt","desc")))
+  ]);
+  missions=mSnap.docs.map(d=>({id:d.id,...d.data()}));
+  sharedFiles=fSnap.docs.map(d=>({id:d.id,...d.data()}));
+  // La liste complète des profils est réservée à l'administrateur.
+  if(isAdmin()){
+    const cSnap=await getDocs(collection(db,"users"));
+    people=cSnap.docs.map(d=>({uid:d.id,...d.data()}));
+  } else {
+    people=[{uid:currentUser.uid,...profile}];
+  }
+  completions={};
+  await Promise.all(missions.map(async m=>{
+    completions[m.id]={};
+    if(isAdmin()){
+      const s=await getDocs(collection(db,"missions",m.id,"completions"));
+      s.forEach(d=>completions[m.id][d.id]=d.data());
+    } else {
+      const s=await getDoc(doc(db,"missions",m.id,"completions",currentUser.uid));
+      if(s.exists()) completions[m.id][currentUser.uid]=s.data();
+    }
+  }));
+  render();
+}
+function isDone(m,uid=currentUser.uid){return !!completions[m.id]?.[uid]?.done}
+function missionCard(m,admin=false){
+  const done=isDone(m), who=m.type==="common"?"Tout le monde":(people.find(p=>p.uid===m.assignedTo)?.firstName||"Personne");
+  const target=admin?`<span class="tag">${esc(who)}</span>`:"";
+  const button=admin?`<span class="tag">${Object.keys(completions[m.id]||{}).filter(uid=>completions[m.id][uid].done).length}/${m.type==="common"?people.length:1} terminé(s)</span><div class="mission-actions"><button class="mini" data-edit-mission="${esc(m.id)}">Modifier</button><button class="danger" data-delete-mission="${esc(m.id)}">Supprimer</button></div>`:
+    `<button class="smallbtn" data-complete="${esc(m.id)}" ${done?"disabled":""}>${done?"Terminée ✓":"Terminer"}</button>`;
+  return `<article class="mission"><h3>${esc(m.title)}</h3><p>${esc(m.description||"Aucune consigne supplémentaire.")}</p><div class="mission-foot">${target}<span class="tag ${done?"done":""}">${done?"Terminée":"À faire"}</span>${button}</div></article>`;
+}
+function render(){
+  const common=missions.filter(m=>m.type==="common"), mine=missions.filter(m=>m.type==="individual"&&m.assignedTo===currentUser.uid);
+  const visible=[...common,...mine], done=visible.filter(m=>isDone(m)).length;
+  $("statTotal").textContent=visible.length-done;$("statDone").textContent=done;$("statPercent").textContent=visible.length?Math.round(done/visible.length*100)+"%":"0%";
+  $("commonMissions").innerHTML=common.length?common.map(m=>missionCard(m)).join(""):"";
+  if(!common.length)empty($("commonMissions"),"Aucune mission commune pour le moment.");
+  $("myMissions").innerHTML=mine.length?mine.map(m=>missionCard(m)).join(""):"";
+  if(!mine.length)empty($("myMissions"),"Aucune mission individuelle pour le moment.");
+  $("sharedFilesList").innerHTML=sharedFiles.length?sharedFiles.map(f=>`<div class="file-row"><div><b>${esc(f.name)}</b><div class="file-meta">${(f.size/1024).toFixed(1)} Ko · Envoyé par ${esc(f.uploadedByName||"Admin")}</div></div><div class="person-actions"><button class="mini" data-download-file="${esc(f.id)}">Télécharger</button>${isAdmin()?`<button class="danger" data-delete-file="${esc(f.id)}">Supprimer</button>`:""}</div></div>`).join(""):"<div class='empty'>Aucun fichier partagé pour le moment.</div>";
+  if(isAdmin()){
+    $("peopleList").innerHTML=people.length?people.map(p=>`<div class="person"><div><b>${esc(p.firstName||"Sans prénom")}</b><div class="muted" style="font-size:10px">${esc(p.uid)}</div></div><div class="person-actions">${p.uid===ADMIN_UID?'<span class="tag">Admin</span>':`<button class="danger" data-delete-person="${esc(p.uid)}">Supprimer</button>`}</div></div>`).join(""):"<div class='empty'>Aucune personne ajoutée.</div>";
+    $("assignedUid").innerHTML=people.filter(p=>p.uid!==ADMIN_UID).map(p=>`<option value="${esc(p.uid)}">${esc(p.firstName||p.uid)}</option>`).join("");
+    $("adminMissionList").innerHTML=missions.length?missions.map(m=>missionCard(m,true)).join(""):"";
+    if(!missions.length)empty($("adminMissionList"),"Aucune mission créée.");
+    loadReports().catch(e => { console.error("Erreur de chargement des signalements :", e); toast(`Signalements indisponibles (${e.code || "erreur"}) : ${e.message || ""}`); });
+  }
+  document.querySelectorAll("[data-complete]").forEach(b=>b.addEventListener("click",()=>completeMission(b.dataset.complete)));
+  document.querySelectorAll("[data-delete-person]").forEach(b=>b.addEventListener("click",()=>removePerson(b.dataset.deletePerson)));
+  document.querySelectorAll("[data-edit-mission]").forEach(b=>b.addEventListener("click",()=>editMission(b.dataset.editMission)));
+  document.querySelectorAll("[data-delete-mission]").forEach(b=>b.addEventListener("click",()=>removeMission(b.dataset.deleteMission)));
+  document.querySelectorAll("[data-download-file]").forEach(b=>b.addEventListener("click",()=>downloadSharedFile(b.dataset.downloadFile)));
+  document.querySelectorAll("[data-delete-file]").forEach(b=>b.addEventListener("click",()=>removeSharedFile(b.dataset.deleteFile)));
+}
+async function removePerson(uid){
+  if(!isAdmin() || uid===ADMIN_UID)return;
+  const person=people.find(p=>p.uid===uid);
+  if(!confirm(`Supprimer ${person?.firstName||"cette personne"} du site ?\nSon profil et ses missions individuelles seront supprimés. Son compte Firebase Authentication ne sera PAS supprimé.`))return;
+  try{
+    const assigned=missions.filter(m=>m.type==="individual"&&m.assignedTo===uid);
+    for(const m of assigned){
+      const cs=await getDocs(collection(db,"missions",m.id,"completions"));
+      for(const c of cs.docs) await deleteDoc(c.ref);
+      await deleteDoc(doc(db,"missions",m.id));
+    }
+    for(const m of missions.filter(x=>x.type==="common")){
+      const c=await getDoc(doc(db,"missions",m.id,"completions",uid));
+      if(c.exists())await deleteDoc(c.ref);
+    }
+    await deleteDoc(doc(db,"users",uid));
+    toast("Personne supprimée du site. Son compte de connexion existe toujours.");
+    await loadData();
+  }catch(e){console.error(e);toast(`Suppression impossible (${e.code||"erreur"}) : ${e.message}`)}
+}
+async function editMission(id){
+  if(!isAdmin())return;
+  const m=missions.find(x=>x.id===id);if(!m)return;
+  const title=prompt("Nouveau titre :",m.title);if(title===null)return;
+  const description=prompt("Nouvelles consignes :",m.description||"");if(description===null)return;
+  if(!title.trim()){toast("Le titre ne peut pas être vide.");return}
+  try{await updateDoc(doc(db,"missions",id),{title:title.trim(),description:description.trim(),updatedAt:serverTimestamp()});toast("Mission modifiée.");await loadData()}
+  catch(e){toast(`Modification impossible (${e.code||"erreur"}) : ${e.message}`)}
+}
+async function removeMission(id){
+  if(!isAdmin())return;
+  const m=missions.find(x=>x.id===id);if(!m)return;
+  if(!confirm(`Supprimer la mission « ${m.title} » et toutes ses validations ?`))return;
+  try{
+    const cs=await getDocs(collection(db,"missions",id,"completions"));
+    for(const c of cs.docs)await deleteDoc(c.ref);
+    await deleteDoc(doc(db,"missions",id));
+    toast("Mission supprimée.");await loadData();
+  }catch(e){toast(`Suppression impossible (${e.code||"erreur"}) : ${e.message}`)}
+}
+async function completeMission(id){
+  try{await setDoc(doc(db,"missions",id,"completions",currentUser.uid),{done:true,completedAt:serverTimestamp()});toast("Mission marquée comme terminée.");await loadData()}
+  catch(e){toast("Impossible de valider : "+e.message)}
+}
+async function loadReports(){
+  const snap=await getDocs(query(collection(db,"reports"),orderBy("createdAt","desc")));
+  const arr=snap.docs.map(d=>({id:d.id,...d.data()}));
+  $("reportsList").innerHTML=arr.length?arr.map(r=>{
+    const conversation=Array.isArray(r.messages)?r.messages:[{role:"user",text:r.message||""}];
+    return `<div class="report">
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <b>${esc(r.firstName||"Utilisateur")} — ${esc(r.status||"open")}</b>
+        <span class="muted" style="font-size:11px">${esc(r.uid||"")}</span>
+      </div>
+      <div class="report-conversation">${conversation.map(m=>`<div class="report-msg"><b>${m.role==="assistant"?"IA":"Utilisateur"}</b>${esc(m.text||"")}</div>`).join("")}</div>
+      <select data-report="${esc(r.id)}">
+        <option value="open" ${r.status==="open"?"selected":""}>À traiter</option>
+        <option value="in_progress" ${r.status==="in_progress"?"selected":""}>En cours</option>
+        <option value="resolved" ${r.status==="resolved"?"selected":""}>Résolu</option>
+      </select>
+    </div>`;
+  }).join(""):"<div class='empty'>Aucun problème signalé.</div>";
+  document.querySelectorAll("[data-report]").forEach(s=>s.addEventListener("change",async()=>{
+    try{await updateDoc(doc(db,"reports",s.dataset.report),{status:s.value});toast("Statut du signalement mis à jour.");}
+    catch(e){toast("Mise à jour impossible : "+e.message);}
+  }));
+}
+$("loginForm").addEventListener("submit",async e=>{e.preventDefault();$("loginError").textContent="";try{await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value)}catch(err){console.error("Erreur de connexion Firebase :",err);$("loginError").textContent=`Connexion impossible (${err.code || "erreur"}) : ${err.message || "Vérifie tes identifiants."}`}});
+$("logoutBtn").addEventListener("click",()=>signOut(auth));
+onAuthStateChanged(auth,async user=>{
+  currentUser=user;
+  if(!user){showLogin();return}
+  try{showApp();await loadData()}
+  catch(e){
+    console.error("Erreur Firebase détaillée :",e);
+    toast(`Erreur Firebase (${e.code||"inconnue"}) : ${e.message||"chargement impossible"}`);
+    if(isAdmin()){$("adminArea").classList.remove("hidden");}
+  }
+});
+$("personForm").addEventListener("submit",async e=>{e.preventDefault();if(!isAdmin())return;const uid=$("personUid").value.trim(),firstName=$("personName").value.trim();try{await setDoc(doc(db,"users",uid),{firstName,createdAt:serverTimestamp()});$("personForm").reset();toast("Profil ajouté. La personne peut se connecter si son compte Auth existe.");await loadData()}catch(err){toast("Ajout impossible : "+err.message)}});
+$("commonForm").addEventListener("submit",async e=>{e.preventDefault();if(!isAdmin())return;try{await addDoc(collection(db,"missions"),{title:$("commonTitle").value.trim(),description:$("commonDesc").value.trim(),type:"common",createdAt:serverTimestamp(),createdBy:currentUser.uid});$("commonForm").reset();toast("Mission commune créée.");await loadData()}catch(err){toast("Création impossible : "+err.message)}});
+$("individualForm").addEventListener("submit",async e=>{e.preventDefault();if(!isAdmin())return;try{await addDoc(collection(db,"missions"),{title:$("individualTitle").value.trim(),description:$("individualDesc").value.trim(),type:"individual",assignedTo:$("assignedUid").value,createdAt:serverTimestamp(),createdBy:currentUser.uid});$("individualForm").reset();toast("Mission individuelle créée.");await loadData()}catch(err){toast("Création impossible : "+err.message)}});
+async function downloadSharedFile(id){
+  const f=sharedFiles.find(x=>x.id===id);if(!f?.data){toast("Ce fichier ancien n'est pas stocké dans Firestore.");return}
+  try{
+    const raw=atob(f.data), bytes=new Uint8Array(raw.length);
+    for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
+    const blob=new Blob([bytes],{type:f.mimeType||"application/octet-stream"});
+    const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=f.name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  }catch(e){console.error(e);toast("Téléchargement impossible.")}
+}
+async function removeSharedFile(id){
+  if(!isAdmin())return;
+  const f=sharedFiles.find(x=>x.id===id);if(!f||!confirm(`Supprimer le fichier « ${f.name} » pour tout le monde ?`))return;
+  try{await deleteDoc(doc(db,"sharedFiles",id));toast("Fichier supprimé.");await loadData()}
+  catch(e){toast(`Suppression impossible (${e.code||"erreur"}) : ${e.message}`)}
+}
+$("fileForm").addEventListener("submit",async e=>{
+  e.preventDefault();if(!isAdmin())return;
+  const file=$("sharedFile").files[0];if(!file)return;
+  // Firestore limite chaque document à 1 Mio ; 650 Ko laisse une marge pour base64 et les métadonnées.
+  if(file.size>650*1024){toast("Fichier trop volumineux : limite de 650 Ko. Utilise un petit PDF, TXT ou une image compressée.");return}
+  const btn=$("fileForm").querySelector("button");btn.disabled=true;btn.textContent="Envoi en cours…";
+  try{
+    const data=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result).split(",")[1]||"");reader.onerror=()=>reject(reader.error||new Error("Lecture du fichier impossible"));reader.readAsDataURL(file)});
+    await addDoc(collection(db,"sharedFiles"),{name:file.name,data,mimeType:file.type||"application/octet-stream",size:file.size,uploadedBy:currentUser.uid,uploadedByName:profile?.firstName||"Admin",createdAt:serverTimestamp()});
+    $("fileForm").reset();toast("Fichier enregistré dans Firestore et partagé avec tous les comptes.");await loadData();
+  }catch(err){console.error(err);toast(`Envoi impossible (${err.code||"erreur"}) : ${err.message}`)}
+  finally{btn.disabled=false;btn.textContent="Envoyer à tout le monde"}
+});
+let activeReportId=null, chatHistory=[];
+function addChatBubble(role,text){
+  const div=document.createElement("div");
+  div.className="chat-bubble "+(role==="user"?"user":"ai");
+  div.textContent=text;
+  $("chatLog").appendChild(div);
+  $("chatLog").scrollTop=$("chatLog").scrollHeight;
+}
+$("problemBtn").addEventListener("click",()=>{
+  activeReportId=null;chatHistory=[];
+  $("chatLog").innerHTML='<div class="chat-bubble ai">Bonjour ! Explique-moi ce qui ne fonctionne pas sur le site 123.</div>';
+  $("problemText").value="";$("chatState").textContent="";
+  $("problemModal").classList.remove("hidden");
+});
+$("cancelProblem").addEventListener("click",()=>$("problemModal").classList.add("hidden"));
+$("problemForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const message=$("problemText").value.trim();
+  if(!message||!currentUser)return;
+  if(!AI_WORKER_URL.startsWith("https://") || AI_WORKER_URL.includes("REMPLACE-MOI")){
+    toast("L'adresse du Worker IA n'est pas encore configurée dans index.html.");
+    return;
+  }
+  const send=$("sendProblem");send.disabled=true;send.textContent="...";
+  $("problemText").value="";addChatBubble("user",message);chatHistory.push({role:"user",text:message});
+  $("chatState").textContent="L'IA réfléchit…";
+  try{
+    const idToken=await getIdToken(currentUser,true);
+    const response=await fetch(AI_WORKER_URL,{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Authorization":"Bearer "+idToken},
+      body:JSON.stringify({messages:chatHistory.slice(-10)})
+    });
+    const payload=await response.json().catch(()=>({}));
+    if(!response.ok)throw new Error(payload.error||`Erreur du serveur (${response.status})`);
+    const answer=String(payload.reply||"Je n'ai pas réussi à formuler une réponse. Réessaie.");
+    addChatBubble("assistant",answer);chatHistory.push({role:"assistant",text:answer});
+    const savedMessages=chatHistory.slice(-10);
+    const reportData={
+      uid:currentUser.uid,
+      firstName:profile?.firstName||"Utilisateur",
+      message:chatHistory.find(m=>m.role==="user")?.text||message,
+      messages:savedMessages,
+      status:"open",
+      updatedAt:serverTimestamp()
+    };
+    if(!activeReportId){
+      reportData.createdAt=serverTimestamp();
+      const created=await addDoc(collection(db,"reports"),reportData);
+      activeReportId=created.id;
+    }else{
+      await updateDoc(doc(db,"reports",activeReportId),{messages:savedMessages,message:chatHistory.find(m=>m.role==="user")?.text||message,updatedAt:serverTimestamp()});
+    }
+    $("chatState").textContent="Conversation enregistrée pour l'administrateur.";
+    if(isAdmin())loadReports().catch(console.error);
+  }catch(err){
+    console.error("Assistant IA :",err);
+    addChatBubble("assistant","Je n'arrive pas à contacter l'assistant pour le moment. Tu peux réessayer ou prévenir l'administrateur. ("+err.message+")");
+    $("chatState").textContent="La réponse IA n'a pas été enregistrée.";
+  }finally{
+    send.disabled=false;send.textContent="Envoyer";
+  }
+});
+</script>
+</body>
+</html>
